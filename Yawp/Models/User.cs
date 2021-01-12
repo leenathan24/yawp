@@ -5,6 +5,9 @@ using System.Threading.Tasks;
 
 namespace Yawp.Models
 {
+    /// <summary>
+    /// A simple User object for end users of the application.
+    /// </summary>
     public class User
     {
         public User(string firstName, string lastName, string username)
@@ -24,6 +27,9 @@ namespace Yawp.Models
 
         public string Username { get; set; }
 
+        /// <summary>
+        /// The Contact object linked to this User. By default all Users have an associated Contact with matching information.
+        /// </summary>
         public Contact LinkedContact { get; set; }
 
         public int Id { get; }
