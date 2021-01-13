@@ -18,9 +18,5 @@ namespace Yawp.Models
         public string Description { get; set; }
 
         public int Owner { get; set; }
-
-        public int[] Managers { get; set; }
-
-        public int[] Members { get; set; }
     }
 }
