@@ -11,31 +11,16 @@ namespace Yawp.Models
     /// </summary>
     public class Team
     {
-        public Team(string name, User owner)
-        {
-            Name = name;
-            Owner = owner;
-        }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
         public string Description { get; set; }
 
-        /// <summary>
-        /// The owning User object. Owners and Managers have modification privileges over a Team.
-        /// </summary>
-        public User Owner { get; set; }
+        public int Owner { get; set; }
 
-        /// <summary>
-        /// A list of non-owning Users to manage the Team. Owners and Managers have modification privileges over a Team.
-        /// </summary>
-        public List<User> Managers { get; set; }
+        public int[] Managers { get; set; }
 
-        /// <summary>
-        /// Members of the Team. Alerts sent to the Team will route to one or more member Contacts.
-        /// </summary>
-        public List<Contact> Members { get; set; }
-
-        public int Id { get; }
+        public int[] Members { get; set; }
     }
 }

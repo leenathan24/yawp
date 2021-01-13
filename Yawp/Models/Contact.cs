@@ -10,11 +10,7 @@ namespace Yawp.Models
     /// </summary>
     public class Contact
     {
-        public Contact(string firstName, string lastName)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-        }
+        public int Id { get; set; }
 
         public string FirstName { get; set; }
 
@@ -26,12 +22,7 @@ namespace Yawp.Models
 
         public string PhoneNumber { get; set; }
 
-        /// <summary>
-        /// The User object linked to this Contact, if any.
-        /// </summary>
-        public User LinkedUser { get; set; }
-
-        public int Id { get; }
+        public int OwnedBy { get; set; }
 
     }
 }
