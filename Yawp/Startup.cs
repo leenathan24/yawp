@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Yawp.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Yawp
 {
@@ -24,6 +26,8 @@ namespace Yawp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<YawpDbContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("YawpDbContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
