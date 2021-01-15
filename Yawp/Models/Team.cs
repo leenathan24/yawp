@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-
-namespace Yawp.Models
+﻿namespace Yawp.Models
 {
     /// <summary>
     /// A Team contains member Contacts that can be alerted.
