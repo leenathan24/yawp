@@ -1,4 +1,6 @@
-﻿namespace Yawp.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Yawp.Models
 {
     /// <summary>
     /// A Team contains member Contacts that can be alerted.
@@ -7,6 +9,7 @@
     {
         public int Id { get; set; }
 
+        [Required]
         public string Name { get; set; }
 
         public string Description { get; set; }

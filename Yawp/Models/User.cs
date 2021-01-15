@@ -9,10 +9,10 @@ namespace Yawp.Models
     {
         public int Id { get; set; }
 
-        [Display(Name = "First Name")]
+        [Required, Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Display(Name = "Last Name")]
+        [Required, Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Display(Name = "Phone")]
@@ -21,6 +21,7 @@ namespace Yawp.Models
         [Display(Name = "Email")]
         public string EmailAddress { get; set; }
 
+        [Required]
         public string Username { get; set; }
 
         [Display(Name = "Linked Contact")]
