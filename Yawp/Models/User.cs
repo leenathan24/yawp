@@ -5,9 +5,8 @@ namespace Yawp.Models
     /// <summary>
     /// A simple User object for end users of the application.
     /// </summary>
-    public class User
+    public class User : BaseEntity
     {
-        public int Id { get; set; }
 
         [Required, Display(Name = "First Name")]
         public string FirstName { get; set; }
