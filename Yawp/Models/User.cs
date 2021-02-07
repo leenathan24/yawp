@@ -2,9 +2,12 @@
 
 namespace Yawp.Models
 {
-    /// <summary>
-    /// A simple User object for end users of the application.
-    /// </summary>
+    /**
+     * <summary>
+     * An entity for end users to login to the application as.
+     * This class is used purely for end user authentication and cannot receive alerts.
+     * </summary>
+     */
     public class User : BaseEntity
     {
 

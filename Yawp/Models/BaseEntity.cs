@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Yawp.Models
 {
+    /**
+     * <summary>Abstract class for the core data model (User, Contact, and Team).</summary>
+     */
     public abstract class BaseEntity
     {
         public int Id { get; set; }
