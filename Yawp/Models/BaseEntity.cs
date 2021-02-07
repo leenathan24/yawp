@@ -9,8 +9,10 @@ namespace Yawp.Models
 
         public string Description { get; set; }
 
+        [Display(Name = "Created")]
         public DateTime? DateCreated { get; set; }
 
+        [Display(Name = "Modified")]
         public DateTime? DateModified { get; set; }
     }
 }
