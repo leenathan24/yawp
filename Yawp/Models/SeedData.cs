@@ -59,7 +59,7 @@ namespace Yawp.Models
                     LastName = user.LastName,
                     EmailAddress = user.EmailAddress,
                     PhoneNumber = user.PhoneNumber,
-                    OwnedBy = user.Id
+                    Owner = user.Id
                 };
                 user.LinkedContact = contact.Id;
                 contacts.Add(contact);
