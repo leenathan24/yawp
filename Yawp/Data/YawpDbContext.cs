@@ -49,25 +49,20 @@ namespace Yawp.Data
 
         private void AddTimestamps()
         {
-            IEnumerable<Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry> entities =
-                ChangeTracker.Entries().Where(x =>
-                    x.Entity is BaseEntity && (x.State == EntityState.Added || x.State == EntityState.Modified));
-
-            foreach (var entity in entities)
+            foreach (var entity in ChangeTracker.Entries())
             {
-                DateTime? created = ((BaseEntity)entity.Entity).DateCreated;
-                var now = DateTime.UtcNow;
-
-                // Always set DateModified, set DateCreated only when adding new objects
-                ((BaseEntity)entity.Entity).DateModified = now;
-
-                if (entity.State == EntityState.Added)
+                if (entity.Entity is BaseEntity && (entity.State != EntityState.Unchanged))
                 {
-                    ((BaseEntity)entity.Entity).DateCreated = now;
+                    DateTime? created = ((BaseEntity)entity.Entity).DateCreated;
+                    var now = DateTime.UtcNow;
 
-                } else 
-                {
-                    ((BaseEntity)entity.Entity).DateCreated = created;
+                    // Always set DateModified, set DateCreated only when adding new objects
+                    if (entity.State == EntityState.Added)
+                    {
+                        ((BaseEntity)entity.Entity).DateCreated = now;
+
+                    }
+                    ((BaseEntity)entity.Entity).DateModified = now;
                 }
             }
         }
