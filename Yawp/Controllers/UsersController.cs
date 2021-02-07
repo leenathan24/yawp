@@ -50,11 +50,9 @@ namespace Yawp.Controllers
         }
 
         // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,DateCreated,DateModified,FirstName,LastName,PhoneNumber,EmailAddress,Username")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Description,FirstName,LastName,PhoneNumber,EmailAddress,Username")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -82,8 +80,6 @@ namespace Yawp.Controllers
         }
 
         // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Description,DateModified,DateCreated,FirstName,LastName,PhoneNumber,EmailAddress,Username")] User user)
