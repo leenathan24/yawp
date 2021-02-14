@@ -24,7 +24,5 @@ namespace Yawp.Models
         [Required, Display(Name = "Phone")]
         public string PhoneNumber { get; set; }
 
-        public int Owner { get; set; }
-
     }
 }

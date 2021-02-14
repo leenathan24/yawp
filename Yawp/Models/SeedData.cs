@@ -53,16 +53,17 @@ namespace Yawp.Models
             var contacts = new List<Contact>();
             foreach (var user in users)
             {
-                var contact = new Contact
+                var linkedContact = new Contact
                 {
+                    Description = $"Contact for user {user.Username}",
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     EmailAddress = user.EmailAddress,
                     PhoneNumber = user.PhoneNumber,
-                    Owner = user.Id
                 };
-                user.LinkedContact = contact.Id;
-                contacts.Add(contact);
+                user.Contact = linkedContact;
+                user.ContactId = linkedContact.Id;
+                contacts.Add(linkedContact);
             };
 
             // Seed a Team

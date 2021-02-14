@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Yawp.Data;
 
 namespace Yawp.Migrations
 {
     [DbContext(typeof(YawpDbContext))]
-    partial class YawpDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210214003321_Rename-LinkedContact-To-Contact")]
+    partial class RenameLinkedContactToContact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -45,6 +47,9 @@ namespace Yawp.Migrations
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Owner")
+                        .HasColumnType("int");
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
@@ -90,7 +95,7 @@ namespace Yawp.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("ContactId")
+                    b.Property<int>("Contact")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DateCreated")
@@ -122,20 +127,7 @@ namespace Yawp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ContactId");
-
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("Yawp.Models.User", b =>
-                {
-                    b.HasOne("Yawp.Models.Contact", "Contact")
-                        .WithMany()
-                        .HasForeignKey("ContactId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contact");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Yawp.Models
 {
@@ -26,8 +27,11 @@ namespace Yawp.Models
         [Required]
         public string Username { get; set; }
 
+        public int ContactId { get; set; }
+
         [Display(Name = "Linked Contact")]
-        public int LinkedContact { get; set; }
+        [ForeignKey("ContactId")]
+        public Contact Contact { get; set; }
 
     }
 }
