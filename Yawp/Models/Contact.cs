@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Yawp.Utilities;
 
 namespace Yawp.Models
 {
@@ -7,7 +8,8 @@ namespace Yawp.Models
      */
     public class Contact : BaseEntity
     {
-        [Required, Display(Name = "First Name")]
+        [Required]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         /*
@@ -17,11 +19,14 @@ namespace Yawp.Models
          */
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-
-        [Required, Display(Name = "Email")]
+        
+        [Required]
+        [Display(Name = "Email")]
+        [RegularExpression(ValidationUtil.EmailAddressRegex, ErrorMessage = "Please enter a valid email address.")]
         public string EmailAddress { get; set; }
 
-        [Required, Display(Name = "Phone")]
+        [Display(Name = "Phone")]
+        [RegularExpression(ValidationUtil.PhoneNumberRegex, ErrorMessage = "Please enter a valid North American phone number.")]
         public string PhoneNumber { get; set; }
 
     }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Yawp.Utilities;
 
 namespace Yawp.Models
 {
@@ -18,11 +19,14 @@ namespace Yawp.Models
         [Required, Display(Name = "Last Name")]
         public string LastName { get; set; }
 
-        [Display(Name = "Phone")]
-        public string PhoneNumber { get; set; }
-
+        [Required]
         [Display(Name = "Email")]
+        [RegularExpression(ValidationUtil.EmailAddressRegex, ErrorMessage = "Please enter a valid email address.")]
         public string EmailAddress { get; set; }
+
+        [Display(Name = "Phone")]
+        [RegularExpression(ValidationUtil.PhoneNumberRegex, ErrorMessage = "Please enter a valid North American phone number.")]
+        public string PhoneNumber { get; set; }
 
         [Required]
         public string Username { get; set; }
