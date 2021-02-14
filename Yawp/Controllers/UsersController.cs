@@ -56,6 +56,15 @@ namespace Yawp.Controllers
         {
             if (ModelState.IsValid)
             {
+                user.Contact = new Contact()
+                {
+                    Description = $"Contact for user {user.Username}",
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    PhoneNumber = user.PhoneNumber,
+                    EmailAddress = user.EmailAddress
+                };
+                _context.Add(user.Contact);
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -136,6 +145,8 @@ namespace Yawp.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var user = await _context.Users.FindAsync(id);
+            var contact = await _context.Contacts.FindAsync(user.ContactId);
+            _context.Contacts.Remove(contact);
             _context.Users.Remove(user);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
