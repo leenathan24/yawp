@@ -11,72 +11,48 @@ namespace Yawp.Models
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
-            using var context = new YawpDbContext
+            YawpDbContext context = new YawpDbContext
                 (serviceProvider.GetRequiredService<DbContextOptions<YawpDbContext>>());
 
             // Do not seed if entries already exist
-            if (context.Users.Any() || context.Contacts.Any() || context.Teams.Any())
+            if (context.Contacts.Any() || context.Teams.Any())
             {
                 return;
             }
 
-            // Seed Users first
-            var users = new List<User>
+            var contacts = new List<Contact>
                 {
-                    new User
+                    new Contact
                     {
                         FirstName = "John",
                         LastName = "Doe",
-                        Username = "johndoe",
                         EmailAddress = "johndoe@example.com",
                         PhoneNumber = "1234567890"
                     },
-                    new User
+                    new Contact
                     {
                         FirstName = "Jane",
                         LastName = "Doe",
-                        Username = "janedoe",
                         EmailAddress = "janedoe@example.com",
-                        PhoneNumber = "0123456789"
+                        PhoneNumber = "0123456789",
                     },
-                    new User
+                    new Contact
                     {
                         FirstName = "Sergei",
                         LastName = "Prokofiev",
-                        Username = "prokoserg",
                         EmailAddress = "prokoserg@example.com",
                         PhoneNumber = "9012345678"
                     }
                 };
 
-            // Seed Contacts and link to Users
-            var contacts = new List<Contact>();
-            foreach (var user in users)
-            {
-                var linkedContact = new Contact
-                {
-                    Description = $"Contact for user {user.Username}",
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    EmailAddress = user.EmailAddress,
-                    PhoneNumber = user.PhoneNumber,
-                };
-                user.Contact = linkedContact;
-                user.ContactId = linkedContact.Id;
-                contacts.Add(linkedContact);
-            };
-
-            // Seed a Team
             var team = new Team
             {
                 Name = "First Team",
                 Description = "The very first team, ever.",
-                Owner = users[0].Id
             };
 
 
-            // Added seeded Users, Contacts, and Teams to DB context
-            context.Users.AddRange(users);
+            // Add seeded Contacts, and Teams to DB context
             context.Contacts.AddRange(contacts);
             context.Teams.Add(team);
 

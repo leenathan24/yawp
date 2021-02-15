@@ -12,8 +12,6 @@ namespace Yawp.Data
     {
         public YawpDbContext(DbContextOptions<YawpDbContext> options) : base(options) { }
 
-        public DbSet<User> Users { get; set; }
-
         public DbSet<Contact> Contacts { get; set; }
 
         public DbSet<Team> Teams { get; set; }
