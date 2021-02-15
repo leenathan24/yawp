@@ -3,9 +3,10 @@ using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Yawp.Models;
 using Yawp.Data;
 
-namespace Yawp.Models
+namespace Yawp.Utilities
 {
     public class SeedData
     {
