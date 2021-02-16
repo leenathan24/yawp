@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using Yawp.Models;
 
 namespace Yawp.Data
 {
-    public class YawpDbContext : DbContext
+    public class YawpDbContext : IdentityDbContext
     {
         public YawpDbContext(DbContextOptions<YawpDbContext> options) : base(options) { }
 
