@@ -52,7 +52,6 @@ namespace Yawp.Data
             {
                 if (entity.Entity is BaseEntity && (entity.State != EntityState.Unchanged))
                 {
-                    DateTime? created = ((BaseEntity)entity.Entity).DateCreated;
                     var now = DateTime.UtcNow;
 
                     // Always set DateModified, set DateCreated only when adding new objects
