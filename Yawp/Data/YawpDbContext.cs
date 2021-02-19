@@ -3,9 +3,11 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
 using Yawp.Models;
+using Yawp.Utilities;
 
 namespace Yawp.Data
 {
@@ -46,21 +48,27 @@ namespace Yawp.Data
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
+        /// <summary>
+        /// Set DateCreated and DateModified timestamps for entities with those properties.
+        /// </summary>
         private void AddTimestamps()
         {
             foreach (var entity in ChangeTracker.Entries())
             {
-                if (entity.Entity is BaseEntity && (entity.State != EntityState.Unchanged))
+                if (GeneralUtil.HasTimestamps(entity.Entity) && (entity.State != EntityState.Unchanged))
                 {
-                    var now = DateTime.UtcNow;
+                    var now = GeneralUtil.Now();
+                    var entityType = entity.Entity.GetType();
 
                     // Always set DateModified, set DateCreated only when adding new objects
                     if (entity.State == EntityState.Added)
                     {
-                        ((BaseEntity)entity.Entity).DateCreated = now;
+                        PropertyInfo created = entityType.GetProperty("DateCreated");
+                        created.SetValue(entity.Entity, now);
 
                     }
-                    ((BaseEntity)entity.Entity).DateModified = now;
+                    PropertyInfo modified = entityType.GetProperty("DateModified");
+                    modified.SetValue(entity.Entity, now);
                 }
             }
         }

@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Yawp.Data;
 using Yawp.Models;
@@ -53,7 +51,7 @@ namespace Yawp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Description,DateCreated,DateModified,FirstName,LastName,EmailAddress,PhoneNumber")] Contact contact)
+        public async Task<IActionResult> Create([Bind("Id,Description,DateCreated,DateModified,FirstName,LastName,Email,PhoneNumber")] Contact contact)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +81,7 @@ namespace Yawp.Controllers
         // POST: Contacts/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,DateCreated,DateModified,FirstName,LastName,EmailAddress,PhoneNumber")] Contact contact)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Description,DateCreated,DateModified,FirstName,LastName,Email,PhoneNumber")] Contact contact)
         {
             if (id != contact.Id)
             {

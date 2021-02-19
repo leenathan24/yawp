@@ -27,22 +27,22 @@ namespace Yawp.Utilities
                     {
                         FirstName = "John",
                         LastName = "Doe",
-                        EmailAddress = "johndoe@example.com",
-                        PhoneNumber = "1234567890"
+                        Email = "johndoe@example.com",
+                        PhoneNumber = "5234567890"
                     },
                     new Contact
                     {
                         FirstName = "Jane",
                         LastName = "Doe",
-                        EmailAddress = "janedoe@example.com",
-                        PhoneNumber = "0123456789",
+                        Email = "janedoe@example.com",
+                        PhoneNumber = "2123456789"
                     },
                     new Contact
                     {
                         FirstName = "Sergei",
                         LastName = "Prokofiev",
-                        EmailAddress = "prokoserg@example.com",
-                        PhoneNumber = "9012345678"
+                        Email = "prokoserg@example.com",
+                        PhoneNumber = "9212345678"
                     }
                 };
 
