@@ -33,8 +33,9 @@ namespace Yawp
 
             //services.AddDatabaseDeveloperPageExceptionFilter();
 
-            //services.AddDefaultIdentity<YawpUser>(options => options.SignIn.RequireConfirmedAccount = true)
-            //    .AddEntityFrameworkStores<YawpDbContext>();
+            services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<YawpDbContext>()
+                .AddDefaultUI();
 
             services.AddControllersWithViews();
         }
