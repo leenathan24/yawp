@@ -19,5 +19,9 @@ namespace Yawp.Models
         [ConcurrencyCheck]
         public DateTime? DateModified { get; set; }
 
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
     }
 }
